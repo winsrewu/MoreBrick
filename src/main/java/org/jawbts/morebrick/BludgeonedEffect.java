@@ -5,6 +5,7 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 
 public class BludgeonedEffect extends StatusEffect {
@@ -33,6 +34,11 @@ public class BludgeonedEffect extends StatusEffect {
                 if (!entity.isSleeping()) {
                     entity.sleep(entity.getSteppingPos());
                     entity.setPos(entity.getX(), entity.getY() + 0.5, entity.getZ());
+
+                    if (entity instanceof PlayerEntity player
+                            && player.getEntityWorld() instanceof ServerWorld serverWorld) {
+                        serverWorld.updateSleepingPlayers();
+                    }
                 }
             }
         }
