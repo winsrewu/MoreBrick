@@ -7,7 +7,8 @@
     "AbstractBlockMixin",
     "FallingBlockEntityMixin",
     "ItemEntityMixin",
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "PlayerEntityMixin"
   ],
   "client": [
   ],
