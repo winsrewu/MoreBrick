@@ -73,14 +73,19 @@ public class ItemEntityMixin {
                 if (hitResult.getType() == HitResult.Type.ENTITY) {
                     Entity hitEntity = ((EntityHitResult) hitResult).getEntity();
 
-                    if (!((LivingEntity) hitEntity).getEquippedStack(EquipmentSlot.HEAD).isEmpty()) {
-                        if (amplifier > 0) {
-                            amplifier -= 1;
-                        }
-                    }
-
                     if (hitEntity instanceof LivingEntity) {
                         int time = hitEntity.getEntityWorld().random.nextBetween(20 * 5, 20 * 60 * 40);
+
+                        if (!((LivingEntity) hitEntity).getEquippedStack(EquipmentSlot.HEAD).isEmpty()) {
+                            if (amplifier > 0) {
+                                if (hitEntity.getEntityWorld().random.nextFloat() < 0.5f) {
+                                    time = time / (20 * 60 * 40) * (20 * 30);
+                                } else {
+                                    amplifier -= 1;
+                                }
+                            }
+                        }
+
                         if (time > 20 * 60 * 38) {
                             time = -1;
                         }
