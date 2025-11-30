@@ -12,7 +12,11 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
-import org.jawbts.morebrick.block.BrokenBrickBlock;
+import org.jawbts.morebrick.block.BrokenBricksBlock;
+import org.jawbts.morebrick.block.BrokenFenceBlock;
+import org.jawbts.morebrick.block.BrokenStairsBlock;
+import org.jawbts.morebrick.block.BrokenWallBlock;
+import org.jawbts.morebrick.block.BrokenSlabBlock;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -114,7 +118,7 @@ public class BrickBlocks {
         public BlockItemPair(String name, Block originBlock, Item addAfter) {
             this.name = name;
 
-            Pair<Block, Item> pair = register(name, BrokenBrickBlock::new, originBlock);
+            Pair<Block, Item> pair = register(name, BrokenBricksBlock::new, originBlock);
             BLOCK = pair.getLeft();
             ITEM = pair.getRight();
 
@@ -157,9 +161,9 @@ public class BrickBlocks {
             this.hasFence = hasFence;
             this.name = name;
 
-            Pair<Block, Item> cubePair = register(name + "s", BrokenBrickBlock::new, originBlock);
-            Pair<Block, Item> stairsPair = register(name + "_stairs", settings -> new StairsBlock(originBlock.getDefaultState(), settings), originBlock);
-            Pair<Block, Item> slabPair = register(name + "_slab", SlabBlock::new, originBlock);
+            Pair<Block, Item> cubePair = register(name + "s", BrokenBricksBlock::new, originBlock);
+            Pair<Block, Item> stairsPair = register(name + "_stairs", settings -> new BrokenStairsBlock(originBlock.getDefaultState(), settings), originBlock);
+            Pair<Block, Item> slabPair = register(name + "_slab", BrokenSlabBlock::new, originBlock);
 
             CUBE = cubePair.getLeft();
             STAIRS = stairsPair.getLeft();
@@ -178,7 +182,7 @@ public class BrickBlocks {
                     .register((itemGroup) -> itemGroup.addAfter(addAfter, CUBE_ITEM, STAIRS_ITEM, SLAB_ITEM));
 
             if (hasWall) {
-                Pair<Block, Item> wallPair = register(name + "_wall", WallBlock::new, originBlock);
+                Pair<Block, Item> wallPair = register(name + "_wall", BrokenWallBlock::new, originBlock);
 
                 WALL = wallPair.getLeft();
                 WALL_ITEM = wallPair.getRight();
@@ -193,7 +197,7 @@ public class BrickBlocks {
             }
 
             if (hasFence) {
-                Pair<Block, Item> fencePair = register(name + "_fence", FenceBlock::new, originBlock);
+                Pair<Block, Item> fencePair = register(name + "_fence", BrokenFenceBlock::new, originBlock);
 
                 FENCE = fencePair.getLeft();
                 FENCE_ITEM = fencePair.getRight();

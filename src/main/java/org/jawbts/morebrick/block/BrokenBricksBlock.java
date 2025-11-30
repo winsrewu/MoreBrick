@@ -16,7 +16,16 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.tick.ScheduledTickView;
 
+import java.util.List;
+
 public class BrokenBrickBlock extends Block implements Falling {
+    private static final List<BlockPos> NEIGHBORS = List.of(
+            new BlockPos(1, 0, 0),
+            new BlockPos(-1, 0, 0),
+            new BlockPos(0, 0, 1),
+            new BlockPos(0, 0, -1)
+    );
+
     public BrokenBrickBlock(Settings settings) {
         super(settings);
     }
@@ -60,11 +69,10 @@ public class BrokenBrickBlock extends Block implements Falling {
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         int supportBlockCount = 0;
-        for (int i = -1; i <= 1; i += 2) {
-            for (int j = -1; j <= 1; j += 2) {
-                if (!canFallThrough(world.getBlockState(pos.add(i, 0, j)))) {
-                    supportBlockCount++;
-                }
+
+        for (BlockPos neighborPos : NEIGHBORS) {
+            if (!canFallThrough(world.getBlockState(pos.add(neighborPos)))) {
+                supportBlockCount++;
             }
         }
 
