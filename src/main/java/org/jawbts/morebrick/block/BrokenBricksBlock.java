@@ -18,17 +18,17 @@ import net.minecraft.world.tick.ScheduledTickView;
 
 import java.util.List;
 
-public class BrokenBrickBlock extends Block implements Falling {
+public class BrokenBricksBlock extends Block implements Falling {
+    public BrokenBricksBlock(Settings settings) {
+        super(settings);
+    }
+
     private static final List<BlockPos> NEIGHBORS = List.of(
             new BlockPos(1, 0, 0),
             new BlockPos(-1, 0, 0),
             new BlockPos(0, 0, 1),
             new BlockPos(0, 0, -1)
     );
-
-    public BrokenBrickBlock(Settings settings) {
-        super(settings);
-    }
 
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, WorldView world, ScheduledTickView tickView, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, Random random) {
@@ -74,6 +74,10 @@ public class BrokenBrickBlock extends Block implements Falling {
             if (!canFallThrough(world.getBlockState(pos.add(neighborPos)))) {
                 supportBlockCount++;
             }
+        }
+
+        if (supportBlockCount == 4) {
+            return;
         }
 
         tryFall(world, pos, supportBlockCount <= 2);
