@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "morebrick:block/broken_chiseled_tuff_bricks"
+  }
+}

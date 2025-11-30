@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "morebrick:block/broken_mossy_stone_bricks",
+    "side": "morebrick:block/broken_mossy_stone_bricks",
+    "top": "morebrick:block/broken_mossy_stone_bricks"
+  }
+}

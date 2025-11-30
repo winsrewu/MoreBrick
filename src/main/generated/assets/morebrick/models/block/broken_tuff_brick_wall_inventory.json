@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "morebrick:block/broken_tuff_bricks"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "morebrick:block/broken_nether_brick_slab"
+    },
+    "type=double": {
+      "model": "morebrick:block/broken_nether_bricks"
+    },
+    "type=top": {
+      "model": "morebrick:block/broken_nether_brick_slab_top"
+    }
+  }
+}

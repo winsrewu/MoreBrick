@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_quartz_brick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "morebrick:quartz_brick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "morebrick:quartz_bricks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_quartz_brick"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "morebrick:quartz_bricks"
+    ]
+  }
+}

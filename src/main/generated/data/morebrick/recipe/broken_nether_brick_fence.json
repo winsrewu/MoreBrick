@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "morebrick:broken_nether_brick"
+  },
+  "pattern": [
+    "###",
+    "# #"
+  ],
+  "result": {
+    "count": 2,
+    "id": "morebrick:broken_nether_brick_fence"
+  }
+}

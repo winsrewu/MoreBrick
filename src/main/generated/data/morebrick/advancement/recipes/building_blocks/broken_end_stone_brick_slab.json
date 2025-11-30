@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_broken_end_stone_brick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "morebrick:broken_end_stone_brick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "morebrick:broken_end_stone_brick_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_broken_end_stone_brick"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "morebrick:broken_end_stone_brick_slab"
+    ]
+  }
+}
