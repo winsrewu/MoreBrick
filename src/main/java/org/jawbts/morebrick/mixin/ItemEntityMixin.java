@@ -78,8 +78,8 @@ public class ItemEntityMixin {
 
                         if (!((LivingEntity) hitEntity).getEquippedStack(EquipmentSlot.HEAD).isEmpty()) {
                             if (amplifier > 0) {
-                                if (hitEntity.getEntityWorld().random.nextFloat() < 0.5f) {
-                                    time = time / (20 * 60 * 40) * (20 * 30);
+                                if (itemEntity.getEntityWorld().random.nextFloat() < 0.5f) {
+                                    time = Math.max(time * (20 * 30) / (20 * 60 * 40), 1);
                                 } else {
                                     amplifier -= 1;
                                 }
